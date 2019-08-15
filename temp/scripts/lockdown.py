@@ -24,6 +24,7 @@ def scan_release(ommit: List[str], path: str) -> List[str]:
     Returns:
         list of the images parsed from the file
     """
+    print("scan_release")
     images = []
     with open(path) as f:
         for line in f:
@@ -44,6 +45,7 @@ def lockdown_image(images: List[str]) -> List[str]:
     Returns:
         list of the lockdowned images
     """
+    print("lockdown_image")
     taggedimages = []
     client = docker.from_env()
     for image in  images:
@@ -59,6 +61,7 @@ def replace_images(org: List[str], new: List[str], path: str):
         new: The list of new images 
         path: The path to the file (release.yaml) that will contain the built images
     """
+    print("replace_image")
     with open(path) as f:
         with open(path+".temp", "x") as ff:
             for line in f:
