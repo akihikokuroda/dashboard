@@ -47,7 +47,7 @@ def lockdown_image(images: List[str]) -> List[str]:
     """
     print("lockdown_image")
     taggedimages = []
-    client = docker.from_env()
+    client = docker.DockerClient(base_url='unix://var/run/docker.sock')
     for image in  images:
       print("image:" + image)
       imageobj = client.images.pull(image)
