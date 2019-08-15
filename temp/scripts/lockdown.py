@@ -49,6 +49,7 @@ def lockdown_image(images: List[str]) -> List[str]:
     taggedimages = []
     client = docker.from_env()
     for image in  images:
+      print("image:" + image)
       imageobj = client.images.pull(image)
       parts = image.split(":")
       taggedimages.append(parts[0] + "@" + imageobj.id)
