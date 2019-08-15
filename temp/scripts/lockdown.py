@@ -44,13 +44,13 @@ def lockdown_image(images: List[str]) -> List[str]:
     Returns:
         list of the lockdowned images
     """
-  taggedimages = []
-  client = docker.from_env()
-  for image in  images:
-    imageobj = client.images.pull(image)
-    parts = image.split(":")
-    taggedimages.append(parts[0] + "@" + imageobj.id)
-  return taggedimages
+    taggedimages = []
+    client = docker.from_env()
+    for image in  images:
+      imageobj = client.images.pull(image)
+      parts = image.split(":")
+      taggedimages.append(parts[0] + "@" + imageobj.id)
+    return taggedimages
 
 def replace_images(org: List[str], new: List[str], path: str):
     """Replace original images wiht new images in the release.yaml at path
